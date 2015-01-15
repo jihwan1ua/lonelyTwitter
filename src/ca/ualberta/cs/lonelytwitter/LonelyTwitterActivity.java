@@ -20,6 +20,9 @@ import android.widget.ListView;
 
 public class LonelyTwitterActivity extends Activity {
 
+	// when an attribute is assigned as static, then that attribute is being shared
+	// throughout the program all the time
+	// final means that the value of this atrribute will never be changed
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -48,7 +51,26 @@ public class LonelyTwitterActivity extends Activity {
 
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
+		
+		// my code
+		User u = new Reader();
+		// Object u = new Author();
+		// the above code is not guaranteed to work since Object might not have
+		// function called setUsername
+		
+		// This means that an array called array is created for the class User
+		ArrayList<User> array = new ArrayList<User>();
+		
+		
+		// we get error here if we don't do anything about the error that is in here
+		// try and except way from python
+		try {
+			u.setUsername("joe");
+		} catch (IOException e) { // generally just Exception is not the best way
+			
+		}
+		
+		/*// TODO Auto-generated method stub*/
 		super.onStart();
 		String[] tweets = loadFromFile();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
